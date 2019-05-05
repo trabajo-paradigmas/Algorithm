@@ -43,6 +43,7 @@ def algorithm(lPuntos, lRestriccion):
 # 	esto es porque me di cuenta de que cada punto no puede tener otro en el mismo eje x o y POR DEFINICION DEL PROBLEMA
 
 	return D
+
 def mergeList(A): #Avance 02/05, falta mota jaja
 	if len(A) >1:
 	md=len(arr)//2
@@ -66,6 +67,7 @@ def mergeList(A): #Avance 02/05, falta mota jaja
 		c.append(B[i])
 		j+=1
 	return c
+
 def showlistPoint(P):
 	for i in range(P):
 		print("("+str(i.x)+", "+str(i.y)+", "+str(i.color)+")")
