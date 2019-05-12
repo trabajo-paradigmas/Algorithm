@@ -15,11 +15,7 @@ def aparear(n):
     showPointList(P)
     aparear = [0] * len(P)
     P.sort(key=lambda Point: Point.x)
-    print("Arreglo ordenado")
-    showPointList(P)
     lCopy = copy.deepcopy(P)
-    print("Copia de arreglo ordenado")
-    showPointList(lCopy)
     rectangulos += algorithm(lCopy, aparear)
     for i in range(len(aparear)):
         print(str(aparear[i]))
@@ -30,8 +26,9 @@ def aparear(n):
 
 def restriccion(A, B, ListO, p, q):
     for i in range(p, q):
-        if (((A.x < ListO[i].x and B.x > ListO[i].x) and (A.y > ListO[i].y and B.y < ListO[i].y)) or (
-                (A.x < ListO[i].x and B.x > ListO[i].x) and (A.y < ListO[i].y and B.y > ListO[i].y))):
+        x = int(ListO[i].x)
+        y = int(ListO[i].y)
+        if ((x > min(A.x,B.x) and x < max(A.x,B.x)) or (y > min(A.y,B.y) and y < max(A.y,B.y))):
             return False
     return True
 
