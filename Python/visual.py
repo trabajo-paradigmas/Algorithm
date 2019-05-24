@@ -158,6 +158,6 @@ class Window:
             
     def take_picture(self,filename=None):
         if filename == None:
-            filename=asksaveasfilename(filetypes=[("postscript","*.ps *.eps")],defaultextension=".ps")
+            filename=filename(filetypes=[("postscript","*.ps *.eps")],defaultextension=".ps")
         self.paper.postscript(file=filename)
         
