@@ -9,6 +9,15 @@
     )
   )
 
+(define (insertion A k)
+  (cond
+    ((null? A) (list k))
+    ((< (car A) k) (cons (car A) (insertion (cdr A) k)))
+    ((> (car A) k) (cons k A))
+    (else(A))
+    )
+  )
+
 (define (counter A)
   (cond
     ((null? A) 0)
@@ -18,10 +27,9 @@
 
 (define (split_at A k)
   (cond
-    ((= k 0) (list(list)(A)))
+    ((= k 0) (list(list) A))
     (else (let
-              (B (split_at (cdr A) (- k 1)))
-          (list(list (cons (car A) (car B)))list (cdr B)))
+              ([B (split_at (cdr A) (- k 1))]) (list(cons (car A) (car B)) (cdr B)))
           )
     )
   )
