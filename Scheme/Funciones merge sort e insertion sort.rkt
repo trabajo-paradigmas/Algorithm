@@ -17,19 +17,15 @@
     (else(A))
     )
   )
-
-(define (counter A)
-  (cond
-    ((null? A) 0)
-    (else (+ (counter (cdr A)) 1))
-    )
+(define (mid_length L)
+  (quotient (length L) 2)
   )
 
 (define (split_at A k)
   (cond
-    ((= k 0) (list(list) A))
+    ((= k 0) (cons(list)A))
     (else (let
-              ([B (split_at (cdr A) (- k 1))]) (list(cons (car A) (car B)) (cdr B)))
+              ([B (split_at (cdr A) (- k 1))]) (cons(cons (car A) (car B))(cdr B)))
           )
     )
   )
