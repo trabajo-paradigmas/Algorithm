@@ -23,9 +23,26 @@
 
 (define (split_at A k)
   (cond
-    ((= k 0) (cons(list)A))
+    ((= k 0) (list (list) A))
     (else (let
               ([B (split_at (cdr A) (- k 1))]) (cons(cons (car A) (car B))(cdr B)))
           )
     )
   )
+
+(define (split L)
+  (split_at L (mid_length L))
+  )
+
+(define (merge_sort L)
+  (cond
+   (<= (length L) 1))
+   (L)
+  (let*
+     ([ab (split L)])
+     (A (merge_sort (car ab)))
+     (B (merge_sort (cdr ab)))
+     )
+     (merge A B)
+  )
+  
