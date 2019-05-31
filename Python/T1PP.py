@@ -73,10 +73,8 @@ def binariSearch(k, l):
 
 def next_point(indice, lista, op = 1):
     k = indice + op
-    if(k >= len(lista) or k <= 0):
-        input("pause...")
-        return indice
-    while((lista[indice].color != lista[k].color) and (k < len(lista))):
+
+    while((lista[indice].color != lista[k].color) and (k >= len(lista) or k < 0)):
         k = k + op
     return k
 
