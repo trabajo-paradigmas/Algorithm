@@ -36,13 +36,25 @@
 
 (define (merge_sort L)
   (cond
-   (<= (length L) 1))
-   (L)
-  (let*
-     ([ab (split L)])
-     (A (merge_sort (car ab)))
-     (B (merge_sort (cdr ab)))
+   (<= (length L) 1) (L)
+  (else (let*
+     ((S (split L))
+      (A (merge_sort (car S)))
+      (B (merge_sort (cdr S))))
+      
+          (merge A B)
+          )
+      
+        )
      )
-     (merge A B)
   )
+
+(define (insertion_sort A)
+ (if
+ (or (null? A) (null? (cdr A)))
+  A
+ (insertion (car A) (insertion_sort (cdr A)))
+ )
+  )
+  
   

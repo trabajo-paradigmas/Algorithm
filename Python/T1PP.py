@@ -1,8 +1,9 @@
+import copy
+import math
+import time
+
 import match
 import visual
-import math
-import copy
-import time
 
 
 def showPointList(l):
@@ -23,11 +24,12 @@ def aparear(n):
     print("El procentaje de apareamiento de puntos fue de: {}".format(porcentaje))
     print("El timepo de ejecucion fue de: {}".format(ejecucion))
     visual.Window(points=Px, rectangles=rectangulos)
+    input("Pause...")
 
 
 def not_in_R(Rec, P1, P2):
     for i in range(len(Rec)):
-        if ((Rec[i].left < min(P1.x, P2.x) and Rec[i].right > max(P1.x, P2.x)) or (
+        if ((Rec[i].left < min(P1.x, P2.x) and Rec[i].right > max(P1.x, P2.x)) and (
                 Rec[i].bottom < min(P1.y, P2.y) and Rec[i].top > max(P1.y, P2.y))):
             return False
     return True
@@ -43,11 +45,11 @@ def restriccion(A, B, list, p, q, rect):
         y = int(list[i].y)
         if (A.color != B.color):
             return False
-        if(list[i].x > min(A.x, B.x)):
-            if(list[i].x < max(A.x, B.x)):
-                if(list[i].y > min(A.y, B.y)):
-                    if(list[i].y < min(A.y, B.y)):
-                        return False
+        if (list[i].x > min(A.x, B.x)) and (list[i].x < max(A.x, B.x)) and (list[i].y > min(A.y, B.y)) and (
+                list[i].y < min(A.y, B.y)):
+            input("Pause2...")
+            return False
+
     return not_in_R(rect, A, B)
 
 def distanceFuntion(P1, P2):
@@ -80,10 +82,10 @@ def next_point(indice, lista, op = 1):
 
 def algorithm(XPuntos, YPuntos):
     rectangulos = []
-    xs = -1
-    xr = -1
-    ys = -1
-    yr = -1
+    xs = 0
+    xr = 0
+    ys = 0
+    yr = 0
     dim = 10 ** 1000000
     for i in range(len(YPuntos)):
         if (i == 0):
@@ -131,13 +133,13 @@ def algorithm(XPuntos, YPuntos):
             if(e == xs or e == xr):
                 aux1 = distanceFuntion(YPuntos[i], XPuntos[e])
                 if ((dim > aux1) and ((restriccion(YPuntos[i], XPuntos[e], YPuntos, i - 1, i + 1, rectangulos) == False) and (
-                        restriccion(YPuntos[i], XPuntos[e], XPuntos, x - 1, x + 1, rectangulos) == False))):
+                        restriccion(YPuntos[i], XPuntos[e], XPuntos, x - 1, x + 1, rectangulos) != False))):
                     dim = aux1
                     punto = XPuntos[e]
-            else:
-                aux1 = distanceFuntion(YPuntos[i], XPuntos[e])
+            elif (e == ys or e == yr):
+                aux1 = distanceFuntion(YPuntos[i], YPuntos[e])
                 if ((dim > aux1) and ((restriccion(YPuntos[i], YPuntos[e], YPuntos, i - 1, i + 1, rectangulos) == False) and (
-                        restriccion(YPuntos[i], YPuntos[e], XPuntos, x - 1, x + 1, rectangulos) == False))):
+                        restriccion(YPuntos[i], YPuntos[e], YPuntos, x - 1, x + 1, rectangulos) != False))):
                     dim = aux1
                     punto = YPuntos[e]
 
@@ -148,4 +150,4 @@ def algorithm(XPuntos, YPuntos):
     return rectangulos
 
 
-aparear(100)
+aparear(10000)
