@@ -1,5 +1,5 @@
 from tkinter import *
-import math
+
 
 class Window:
     
@@ -146,7 +146,7 @@ class Window:
         else:
             zoominv=1/self.zoom
             newzoominv=zoominv+self.deltazoom*zoominv
-            self.setzoom(1/(newzoominv))
+            self.setzoom(1 / newzoominv)
                 
     def zoomin(self,event):
         if self.zoom >= 1.0:
@@ -154,10 +154,10 @@ class Window:
         else:
             zoominv=1/self.zoom
             newzoominv=zoominv-self.deltazoom*zoominv
-            self.setzoom(1/(newzoominv))
+            self.setzoom(1 / newzoominv)
             
     def take_picture(self,filename=None):
         if filename == None:
-            filename=asksaveasfilename(filetypes=[("postscript","*.ps *.eps")],defaultextension=".ps")
+            filename = filename(filetypes=[("postscript", "*.ps *.eps")], defaultextension=".ps")
         self.paper.postscript(file=filename)
         

@@ -36,14 +36,14 @@ def not_in_R(Rec, P1, P2):
 
 
 def restriccion(A, B, list, p, q, rect):
-    if(p < 0):
+    if p < 0:
         p = 0
-    if(q == len(list)):
+    if q == len(list):
         q = q - 1
     for i in range(p, q + 1):
         x = int(list[i].x)
         y = int(list[i].y)
-        if (A.color != B.color):
+        if A.color != B.color:
             return False
         if (list[i].x > min(A.x, B.x)) and (list[i].x < max(A.x, B.x)) and (list[i].y > min(A.y, B.y)) and (
                 list[i].y < min(A.y, B.y)):
@@ -63,7 +63,7 @@ def binariSearch(k, l):
     flag = False
     while ini <= top and not flag:
         md = (ini + top) // 2
-        if (l[md].x == k.x):
+        if l[md].x == k.x:
             flag = True
             indice = md
         else:
@@ -76,7 +76,7 @@ def binariSearch(k, l):
 def next_point(indice, lista, op = 1):
     k = indice + op
 
-    while((lista[indice].color != lista[k].color) and (k >= len(lista) or k < 0)):
+    while (lista[indice].color != lista[k].color) and (k >= len(lista) or k < 0):
         k = k + op
     return k
 
@@ -88,24 +88,24 @@ def algorithm(XPuntos, YPuntos):
     yr = 0
     dim = 10 ** 1000000
     for i in range(len(YPuntos)):
-        if (i == 0):
+        if i == 0:
             x = binariSearch(YPuntos[i], XPuntos)
-            if (x == 0):
+            if x == 0:
                 xs = next_point(x, XPuntos)
                 ys = next_point(i, YPuntos)
-            elif (x == (len(XPuntos) - 1)):
+            elif x == (len(XPuntos) - 1):
                 xr = next_point(x, XPuntos, -1)
                 ys = next_point(i, YPuntos)
             else:
                 xs = next_point(x, XPuntos)
                 xr = next_point(x, XPuntos, -1)
                 ys = next_point(i, YPuntos)
-        elif (i == (len(YPuntos) - 1)):
+        elif i == (len(YPuntos) - 1):
             x = binariSearch(YPuntos[i], XPuntos)
-            if (x == 0):
+            if x == 0:
                 xs = next_point(x, XPuntos)
                 yr = next_point(i, YPuntos, -1)
-            elif (x == (len(XPuntos) - 1)):
+            elif x == (len(XPuntos) - 1):
                 xr = next_point(x, XPuntos, -1)
                 yr = next_point(i, YPuntos, -1)
             else:
@@ -114,11 +114,11 @@ def algorithm(XPuntos, YPuntos):
                 yr = next_point(i, YPuntos, -1)
         else:
             x = binariSearch(YPuntos[i], XPuntos)
-            if (x == 0):
+            if x == 0:
                 xs = next_point(x, XPuntos)
                 ys = next_point(i, YPuntos)
                 yr = next_point(i, YPuntos, -1)
-            elif (x == (len(XPuntos) - 1)):
+            elif x == (len(XPuntos) - 1):
                 xr = next_point(x, XPuntos, -1)
                 yr = next_point(i, YPuntos, -1)
                 ys = next_point(i, YPuntos)
@@ -130,20 +130,20 @@ def algorithm(XPuntos, YPuntos):
         punto = match.Point(0,0,0)
         aux = [xs, xr, ys, yr]
         for e in aux:
-            if(e == xs or e == xr):
+            if e == xs or e == xr:
                 aux1 = distanceFuntion(YPuntos[i], XPuntos[e])
                 if ((dim > aux1) and ((restriccion(YPuntos[i], XPuntos[e], YPuntos, i - 1, i + 1, rectangulos) == False) and (
                         restriccion(YPuntos[i], XPuntos[e], XPuntos, x - 1, x + 1, rectangulos) != False))):
                     dim = aux1
                     punto = XPuntos[e]
-            elif (e == ys or e == yr):
+            elif e == ys or e == yr:
                 aux1 = distanceFuntion(YPuntos[i], YPuntos[e])
                 if ((dim > aux1) and ((restriccion(YPuntos[i], YPuntos[e], YPuntos, i - 1, i + 1, rectangulos) == False) and (
                         restriccion(YPuntos[i], YPuntos[e], YPuntos, x - 1, x + 1, rectangulos) != False))):
                     dim = aux1
                     punto = YPuntos[e]
 
-        if (punto.x != 0 and punto.y != 0):
+        if punto.x != 0 and punto.y != 0:
             r = match.Rectangle(min(YPuntos[x].x, punto.x), max(YPuntos[x].x, punto.x), min(YPuntos[x].y, punto.y),
                                 max(YPuntos[x].y, punto.y))
             rectangulos.append(r)
