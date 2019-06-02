@@ -23,11 +23,14 @@ def aparear(n):
     ejecucion = time.time() - tiempo
     print("El procentaje de apareamiento de puntos fue de: {}".format(porcentaje))
     print("El timepo de ejecucion fue de: {}".format(ejecucion))
-    visual.Window(points=Px, rectangles=rectangulos)
+    visual.Window("El procentaje de apareamiento de puntos fue de: {}".format(porcentaje), points=Px,
+                  rectangles=rectangulos)
     input("Pause...")
 
 
 def not_in_R(Rec, P1, P2):
+    if len(Rec) == 0:
+        return True
     for i in range(len(Rec)):
         if ((Rec[i].left < min(P1.x, P2.x) and Rec[i].right > max(P1.x, P2.x)) and (
                 Rec[i].bottom < min(P1.y, P2.y) and Rec[i].top > max(P1.y, P2.y))):
@@ -35,22 +38,18 @@ def not_in_R(Rec, P1, P2):
     return True
 
 
-def restriccion(A, B, list, p, q, rect):
-    if p < 0:
-        p = 0
-    if q == len(list):
-        q = q - 1
-    for i in range(p, q + 1):
-        x = int(list[i].x)
-        y = int(list[i].y)
-        if A.color != B.color:
+def restriccion(A, B, ListO, p, q):
+    for i in range(p, q):
+        x = int(ListO[i].x)
+        y = int(ListO[i].y)
+        if (A.std == True or B.std == True):
             return False
-        if (list[i].x > min(A.x, B.x)) and (list[i].x < max(A.x, B.x)) and (list[i].y > min(A.y, B.y)) and (
-                list[i].y < min(A.y, B.y)):
-            input("Pause2...")
+        if (A.color != B.color):
             return False
+        if ((x > min(A.x, B.x) and x < max(A.x, B.x)) or (y > min(A.y, B.y) and y < max(A.y, B.y))):
+            return False
+    return True
 
-    return not_in_R(rect, A, B)
 
 def distanceFuntion(P1, P2):
     return math.sqrt(((P2.x - P1.x) ** 2) + ((P2.y - P1.y) ** 2))
@@ -73,12 +72,14 @@ def binariSearch(k, l):
                 ini = md + 1
     return indice
 
-def next_point(indice, lista, op = 1):
+
+def next_point(indice, lista, op=1):
     k = indice + op
 
     while (lista[indice].color != lista[k].color) and (k >= len(lista) or k < 0):
         k = k + op
     return k
+
 
 def algorithm(XPuntos, YPuntos):
     rectangulos = []
@@ -127,27 +128,41 @@ def algorithm(XPuntos, YPuntos):
                 xr = next_point(x, XPuntos, -1)
                 yr = next_point(i, YPuntos, -1)
                 ys = next_point(i, YPuntos)
-        punto = match.Point(0,0,0)
+        punto = [0, 0]
         aux = [xs, xr, ys, yr]
+        aux1 = 10 ** 1000000
         for e in aux:
             if e == xs or e == xr:
                 aux1 = distanceFuntion(YPuntos[i], XPuntos[e])
-                if ((dim > aux1) and ((restriccion(YPuntos[i], XPuntos[e], YPuntos, i - 1, i + 1, rectangulos) == False) and (
-                        restriccion(YPuntos[i], XPuntos[e], XPuntos, x - 1, x + 1, rectangulos) != False))):
+                if ((dim > aux1) and ((restriccion(YPuntos[i], XPuntos[e], YPuntos, i - 1, i + 1) != False) and (
+                        restriccion(YPuntos[i], XPuntos[e], XPuntos, x - 1, x + 1) != False))):
                     dim = aux1
-                    punto = XPuntos[e]
+                    punto = [e, 1]
             elif e == ys or e == yr:
                 aux1 = distanceFuntion(YPuntos[i], YPuntos[e])
-                if ((dim > aux1) and ((restriccion(YPuntos[i], YPuntos[e], YPuntos, i - 1, i + 1, rectangulos) == False) and (
-                        restriccion(YPuntos[i], YPuntos[e], YPuntos, x - 1, x + 1, rectangulos) != False))):
+                if ((dim > aux1) and ((restriccion(YPuntos[i], YPuntos[e], YPuntos, i - 1, i + 1) == True) and (
+                        restriccion(YPuntos[i], YPuntos[e], YPuntos, x - 1, x + 1) == True))):
                     dim = aux1
-                    punto = YPuntos[e]
-
-        if punto.x != 0 and punto.y != 0:
-            r = match.Rectangle(min(YPuntos[x].x, punto.x), max(YPuntos[x].x, punto.x), min(YPuntos[x].y, punto.y),
-                                max(YPuntos[x].y, punto.y))
+                    punto = [e, -1]
+        p1 = punto[0]
+        p2 = punto[1]
+        if (p2 == 1) and (not_in_R(rectangulos, YPuntos[i], YPuntos[p1]) == True):
+            r = match.Rectangle(min(YPuntos[x].x, YPuntos[p1].x), max(YPuntos[x].x, YPuntos[p1].x),
+                                min(YPuntos[x].y, YPuntos[p1].y),
+                                max(YPuntos[x].y, YPuntos[p1].y))
+            YPuntos[i].std = True
+            YPuntos[p1].std = True
+            print("Agregando...")
+            rectangulos.append(r)
+        elif (not_in_R(rectangulos, YPuntos[i], XPuntos[p1]) == True):
+            r = match.Rectangle(min(YPuntos[x].x, XPuntos[p1].x), max(YPuntos[x].x, XPuntos[p1].x),
+                                min(YPuntos[x].y, XPuntos[p1].y),
+                                max(YPuntos[x].y, XPuntos[p1].y))
+            YPuntos[i].std = True
+            XPuntos[p1].std = True
+            print("Agregando...")
             rectangulos.append(r)
     return rectangulos
 
 
-aparear(10000)
+aparear(100)

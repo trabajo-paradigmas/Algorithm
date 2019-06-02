@@ -2,12 +2,16 @@ from tkinter import *
 
 
 class Window:
-    
-    def __init__(self, points=[], rectangles=[]):
+
+    def __init__(self, titles, points=None, rectangles=None):
+        if rectangles is None:
+            rectangles = []
+        if points is None:
+            points = []
         self.root = Tk()
         self.h = 1000
         self.w = 1000
-        self.paper = Canvas(self.root,background="white", height=self.h, width=self.w)
+        self.paper = Canvas(self.root, background="white", height=self.h, width=self.w)
         self.center = [0,0]
         self.points = points
         self.boxes = rectangles
