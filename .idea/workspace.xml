@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="eb255050-6023-42bd-b3c4-f02989b363ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python/T1PP.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python/T1PP.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python/match.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python/match.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python/visual.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python/visual.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,11 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Python/T1PP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="655">
+            <state relative-caret-position="361">
               <caret line="163" column="33" selection-start-line="163" selection-start-column="33" selection-end-line="163" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -38,9 +32,9 @@
         <option value="$PROJECT_DIR$/visual.py" />
         <option value="$PROJECT_DIR$/T1PP.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/Python/visual.py" />
         <option value="$USER_HOME$/Desktop/T1PP.py" />
         <option value="$PROJECT_DIR$/Python/match.py" />
+        <option value="$PROJECT_DIR$/Python/visual.py" />
         <option value="$PROJECT_DIR$/Python/T1PP.py" />
       </list>
     </option>
@@ -174,17 +168,23 @@
       <option name="project" value="LOCAL" />
       <updated>1559506661960</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ahora aparea todo con todo, 200% de puntos apareados">
+      <created>1559512455010</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1559512455010</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.5209003" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.3295964" />
+      <window_info active="true" anchor="bottom" id="Messages" visible="true" weight="0.32922733" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.34828496" />
@@ -271,7 +271,8 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="por si las moscar" />
     <MESSAGE value="ya no hace nada, pero es rapidito" />
-    <option name="LAST_COMMIT_MESSAGE" value="ya no hace nada, pero es rapidito" />
+    <MESSAGE value="ahora aparea todo con todo, 200% de puntos apareados" />
+    <option name="LAST_COMMIT_MESSAGE" value="ahora aparea todo con todo, 200% de puntos apareados" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -295,13 +296,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Python/visual.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Python/match.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -309,13 +303,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Python/visual.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Python/T1PP.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="655">
+        <state relative-caret-position="361">
           <caret line="163" column="33" selection-start-line="163" selection-start-column="33" selection-end-line="163" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
