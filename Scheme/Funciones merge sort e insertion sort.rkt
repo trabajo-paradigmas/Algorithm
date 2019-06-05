@@ -129,9 +129,10 @@
       (
        (A (func a b))
        )
-    (list A '(next_gen b A))
+    (list A '(next_gen func b A))
     )
   )
+
 (define (gen func n)
   (define(gen_aux func a b n acc)
     (if
@@ -141,4 +142,21 @@
      )
     )
   (gen_aux func 0 1 n 0)
+  )
+
+(define (gen->list func n)
+  (define (gen_l a b func n acc)
+    (cond
+      (= n 0)
+      (list)
+      (= n acc)
+      (list (car (next_gen a b)))
+      (let
+          (
+          (A (next_gen a b))
+          )
+        (cons (gen_l b (car A) func n (+ acc 1)) (car A)))
+    )
+    )
+  (gen_l 0 1 func n 1)
   )
