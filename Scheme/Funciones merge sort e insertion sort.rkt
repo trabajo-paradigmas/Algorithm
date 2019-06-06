@@ -1,5 +1,5 @@
 #lang scheme
-
+;FALTA DOCUMENTAR!!!
 (define (merge A B op)
   (cond
     ((null? A) B)
@@ -141,22 +141,28 @@
      (gen_aux func b (car (next_gen func a b)) n (+ acc 1))
      )
     )
-  (gen_aux func 0 1 n 0)
+  (if
+   (= n 0) (list)
+   (if
+    (= n 1) 1
+    (gen_aux func 0 1 n 2)
+    )
+   )
   )
 
 (define (gen->list func n)
-  (define (gen_l a b func n acc)
-    (cond
-      (= n 0)
-      (list)
-      (= n acc)
-      (list (car (next_gen a b)))
-      (let
-          (
-          (A (next_gen a b))
-          )
-        (cons (gen_l b (car A) func n (+ acc 1)) (car A)))
+  (define(gen_aux func a b n acc)
+    (if
+     (= acc n)
+     (list(car (next_gen func a b)))
+     (cons (+ a b)(gen_aux func b (car (next_gen func a b)) n (+ acc 1)))
+     )
     )
+  (if
+   (= n 0) (list)
+   (if
+    (= n 1) (list 1)
+    (cons 1(gen_aux func 0 1 n 2))
     )
-  (gen_l 0 1 func n 1)
+   )
   )
