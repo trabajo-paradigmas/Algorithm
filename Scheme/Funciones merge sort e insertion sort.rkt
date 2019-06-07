@@ -100,7 +100,7 @@
 )
 
 
-(define (Tim_sort L op)
+(define (timsort L op)
   (define (Tim_aux L largo op)
     (if
      (null? L)
