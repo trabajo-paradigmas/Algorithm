@@ -22,15 +22,19 @@ valor mediante el cual se compararán los elementos.
 Por ejemplo:
 
 (timsort (list 3 0 1 2 6 5 4) (lambda (x) x))
+
 => (0 1 2 3 4 5 6)
 
 (timsort (list 3 0 1 2 6 5 4) (lambda (x) (- x)))
+
 => (6 5 4 3 2 1 0)
 
 (timsort (list 3 0 1 2 6 5 4) (lambda (x) (abs (- x 2.8))))
+
 => (3 2 4 1 5 0 6)
 
 (timsort (list '(1 2) '(3) '(4 5 6)) length)
+
 => ((3) (1 2) (4 5 6))
 
 Tenga presente que por cada elemento el valor de key debe ser calculado una sola vez durante todo
@@ -59,12 +63,15 @@ elementos generados por g.
 Como ejemplos:
 
 (gen->list (take 8 fib))
+
 => (list 1 1 2 3 5 8 13 21)
 
 (gen->list (take 0 fib))
+
 => ()
 
 (gen->list fib)
+
 => (list 1 1 2 3 5 8 13 21 ...)
 
 Notar que el tercer ejemplo ha sido escrito solo a modo de entendimiento. Se generará una lista
