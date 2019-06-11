@@ -88,45 +88,40 @@
   (Tim_aux L (length L) op)
   )
 
-(define (fib) (lambda(x y)(+ x y)))
-
-;Aplica la función a dos parámetros
-(define (next_gen func a b)
-  (list (func a b))
+;Función de la succesión Fibonacci 
+(define fib
+  (lambda(x y)(+ x y)); Se suman los dos antesesores
   )
 
-;(take n) Genera el enésimo término de un generador Fibonacci
-(define (gen func n)
-  (define(gen_aux func a b n acc); Define una función auxiliar
-    (if
-     (= acc n); Si el la posición del numero buscado es igual al acumulador
-     (car (next_gen func a b)); Se devuelve el numero generado por la función
-     (gen_aux func b (car (next_gen func a b)) n (+ acc 1)); De lo contrario se sigue al próximo generador
-     )
-    )
-  (if
-   (= n 0) (list); Si  se pide el elemento 0 se devuelve una lista vacía
-   (if
-    (= n 1) 1; Si se busca el primer elemento se devuelve un uno
-    (gen_aux func 0 1 n 2); De lo contrario se llama a la función auxiliar para avanzar a la posición buscada
-    )
-   )
+;Generador
+(define (gen func a b)
+  (list b (list (lambda () (gen func b (func a b))))); Devuelve una lista con el último término calculado y el generador siguiente
   )
 
-;(gen_list) Genera una lista de los primeros n términos de la suscesión Fibonacci
-(define (gen->list func n); Lo mismo que la anterior
-  (define(gen_aux func a b n acc)
-    (if
-     (= acc n)
-     (list(car (next_gen func a b)))
-     (cons (+ a b)(gen_aux func b (car (next_gen func a b)) n (+ acc 1))); Pero al final se enlista el resultado
-     )
+;Aplica la función a un generador de dos parámetros
+(define (take n func)
+  (define (aux gen a b n acc); Se define la función auxiliar para mantener el conteo del acumulador
+    (let; Sea
+        (
+         (A (eval (cadr gen))); A igual a la evaluación del próximo generador
+         )
+      (if; Si
+       (= n 0) ;Se pide el termino °0
+       (list); Se devuelve una lista vacía
+       (if; De lo contrario, si
+        (= n acc); el enésimo término es igual al acumulador
+        (list b); Se devuelve el último término
+        (cons b (aux A b (car A) n (+ acc 1))); De lo contrario, se devuelve la concatenación de el último elemento calculado con lo que resta de buscar el enésimo término
+        )
+       )
+      )
     )
-  (if
-   (= n 0) (list)
-   (if
-    (= n 1) (list 1)
-    (cons 1(gen_aux func 0 1 n 2)); Acá también se enlista el primer elemento omitido, el uno
-    )
-   )
+  (lambda()(aux (gen func 0 1) 0 1 n 1)); Se devuelve una función que enlista nos n primeros términos de un generador
+  )
+    
+    
+
+; Genera una lista de los primeros n términos de la suscesión Fibonacci dada por el generador
+(define (gen->list func)
+  (func); Se ejecuta el enlistado de (take (func) n)
   )
