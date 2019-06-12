@@ -72,7 +72,7 @@
      (= (length L) 1); Si tiene un elemento
      L; Se devuelve la lista ya que un elemento único está ordenado
      (if
-      (< largo 18); Si se encuentra en el punto óptimo de galope
+      (< largo 18); Si se encuentra en el punto óptimo de galope (18 para Scheme)
       (in_sort L op); Entonces devuelve lista ordenada por inserción
       (let*; De lo contrario
           (;Sea
@@ -87,41 +87,51 @@
     )
   (Tim_aux L (length L) op)
   )
+;El punto óptimo del galope fue calculado mididendo diferentes tiempos de ejecución para diferentes largos de listas, que se incrementan en uno por cada prueba nueva,
+;hasta que el algoritmo por insersión resultara por primera vez pase de tener menor tiempor de ejecución frente al ordenamiento por mezcla
+;a todo lo contrario (hasta que el ordenamiento por mezcla presente menor tiempor de ejecución que por insersión). Eso en Scheme ocurre en el largo 18 de lsitas
+; siendo 19 un largo óptimo para mergesort
 
-;Función de la succesión Fibonacci 
-(define fib
-  (lambda(x y)(+ x y)); Se suman los dos antesesores
-  )
 
-;Generador
-(define (gen func a b)
-  (list b (list (lambda () (gen func b (func a b))))); Devuelve una lista con el último término calculado y el generador siguiente
-  )
-
-;Aplica la función a un generador de dos parámetros
-(define (take n func)
-  (define (aux gen a b n acc); Se define la función auxiliar para mantener el conteo del acumulador
-    (let; Sea
-        (
-         (A (eval (cadr gen))); A igual a la evaluación del próximo generador
-         )
-      (if; Si
-       (= n 0) ;Se pide el termino °0
-       (list); Se devuelve una lista vacía
-       (if; De lo contrario, si
-        (= n acc); el enésimo término es igual al acumulador
-        (list b); Se devuelve el último término
-        (cons b (aux A b (car A) n (+ acc 1))); De lo contrario, se devuelve la concatenación de el último elemento calculado con lo que resta de buscar el enésimo término
-        )
+;Próximo generador
+(define (next_gen gen op); gen = generador: (último-valor (próximo-generador op) ; op = función a operar
+  (let*; Sea
+      (
+       (A(car gen)); A igual al último valor generado 
+       (B (caadr gen)); B igual al próximo valor a generar
        )
+      (list B (list (op A B) (lambda()(op A B)) op)); Devuelve el próximo generador
       )
+  )
+
+;Generador base de la succesión Fibonacci
+(define fib
+  (let; Sea
+      (
+       (x(car '(0))); x igual a 0
+       (y(car '(1))); y igual a 1
+       )
+    (next_gen (list x (list (+ x y) (lambda()(lambda()(+ x y)))) +) +); Se entrega el primer generador de la sucesión Fibonacci
     )
-  (lambda()(aux (gen func 0 1) 0 1 n 1)); Se devuelve una función que enlista nos n primeros términos de un generador
+  )
+
+
+;Generador que devuelve un generador acotado
+(define (take gen n)
+  (if; Si 
+   (= n 0); El número buscado es igual a 0
+   (cons #f (cdr gen)); Se devuelve un generador con (car) = falso
+   (list (car gen) (lambda ()(take (next_gen gen (caddr(cadr gen))) (- n 1)))); De lo contrario, se devuelve un generador con (car)= elemento generado y (cdr)= siguiente generador
+   )
   )
     
     
 
-; Genera una lista de los primeros n términos de la suscesión Fibonacci dada por el generador
-(define (gen->list func)
-  (func); Se ejecuta el enlistado de (take (func) n)
+; Función que aplica un generador acotado y lo enlista
+(define (gen->list gen); gen = generador que entrega un nuevo generador acotado
+  (if; Si
+   (equal? (car gen) #f); El (car) de "gen" es equivalente a falso
+   null; Se retorna una lista vacía
+   (cons (car gen)(gen->list ((cadr gen)))); De lo contrario, se devuelve la concatenación del primer elmeneto del "gen" con lo que resta de enlistar los siguientes generadores "((cdr gen))"
+   )
   )
