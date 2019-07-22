@@ -17,11 +17,21 @@
         </DimensionLayout>
       </Layout>
     </Container>
+    <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
+      <SubComponents>
+        <Menu class="javax.swing.JMenu" name="jMenu1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="File"/>
+          </Properties>
+        </Menu>
+      </SubComponents>
+    </Menu>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
   <SyntheticProperties>
+    <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
@@ -40,163 +50,138 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jInternalFrame1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jInternalFrame1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Component id="jPanel1" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JInternalFrame" name="jInternalFrame1">
-      <Properties>
-        <Property name="visible" type="boolean" value="true"/>
-      </Properties>
+    <Container class="javax.swing.JPanel" name="jPanel1">
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="Canvas" min="-2" pref="666" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                          <Component id="AddNode" min="-2" pref="69" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="NewNodeKey" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="LabelAddNode" max="32767" attributes="0"/>
+                      <Component id="ShowGraphButton" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="LabelChoiceOrder" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="PostorderChoice" min="-2" max="-2" attributes="0"/>
+                                      <Component id="PreorderChoice" min="-2" max="-2" attributes="0"/>
+                                      <Component id="InorderChoice" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="Separator1" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                  <Component id="LabelAddNode" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="NewNodeKey" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="AddNode" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="Separator1" min="-2" pref="22" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="LabelChoiceOrder" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="InorderChoice" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="PostorderChoice" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="PreorderChoice" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                  <Component id="ShowGraphButton" min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="Canvas" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel1">
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Canvas" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-                              <Component id="AddNode" min="-2" pref="69" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="NewNodeKey" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="LabelAddNode" max="32767" attributes="0"/>
-                          <Component id="ShowGraphButton" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="LabelChoiceOrder" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="PostorderChoice" min="-2" max="-2" attributes="0"/>
-                                          <Component id="PreorderChoice" min="-2" max="-2" attributes="0"/>
-                                          <Component id="InorderChoice" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="Separator1" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Canvas" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="LabelAddNode" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="NewNodeKey" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="AddNode" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="Separator1" min="-2" pref="22" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="LabelChoiceOrder" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="InorderChoice" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="PostorderChoice" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="PreorderChoice" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                              <Component id="ShowGraphButton" min="-2" pref="25" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JToggleButton" name="AddNode">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Add"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="NewNodeKey">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NewNodeKeyActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabelAddNode">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ingrese el valor del nodo"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabelChoiceOrder">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Escoga el recorrido"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="InorderChoice">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Inorder"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="PostorderChoice">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Postorder"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="PreorderChoice">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Preorder"/>
-              </Properties>
-            </Component>
-            <Component class="java.awt.Canvas" name="Canvas">
-            </Component>
-            <Component class="javax.swing.JButton" name="ShowGraphButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Show Graph"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JSeparator" name="Separator1">
-            </Component>
-          </SubComponents>
-        </Container>
-        <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
-          <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jMenu1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="File"/>
-              </Properties>
-            </Menu>
-          </SubComponents>
-        </Menu>
+        <Component class="javax.swing.JToggleButton" name="AddNode">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Add"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="NewNodeKey">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NewNodeKeyActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="LabelAddNode">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ingrese el valor del nodo"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="LabelChoiceOrder">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Escoga el recorrido"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="InorderChoice">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Inorder"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="PostorderChoice">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Postorder"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="PreorderChoice">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Preorder"/>
+          </Properties>
+        </Component>
+        <Component class="java.awt.Canvas" name="Canvas">
+        </Component>
+        <Component class="javax.swing.JButton" name="ShowGraphButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Show Graph"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="Separator1">
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
