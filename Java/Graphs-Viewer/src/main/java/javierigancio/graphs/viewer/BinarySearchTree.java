@@ -9,91 +9,91 @@ package javierigancio.graphs.viewer;
  *
  * @author ignacio
  */
-public class BinarySearchTree {
+public class BinarySearchTree<T> {
 
-    node root;
+    Node<T> root;
 
     public BinarySearchTree() {
         this.root = null;
     }
 
-    public void insert(int key) {
+    public void insert(T key) {
         root = fInert(root, key);
     }
 
-    public void delete(int key) {
+    public void delete(T key) {
         root = fDelete(root, key);
     }
 
-    public void preOrder(node fNode) {
+    public void preOrder(Node fNode) {
         /*funcion de la wea de java que va a mostrar la caga en una pantalla qla.*/
-        if (fNode.izq != null) {
-            preOrder(fNode.izq);
+        if (fNode.left != null) {
+            preOrder(fNode.left);
         }
-        if (fNode.der != null) {
-            preOrder(fNode.der);
+        if (fNode.right != null) {
+            preOrder(fNode.right);
         }
     }
 
-    public void inOrder(node fNode) {
-        if (fNode.izq != null) {
-            inOrder(fNode.izq);
-        }
-        /*funcion de la wea de java que va a mostrar la caga en una pantalla qla.*/
-        if (fNode.der != null) {
-            inOrder(fNode.der);
-        }
-    }
-
-    public void posOrder(node fNode) {
-        if (fNode.izq != null) {
-            posOrder(fNode.izq);
-        }
-        if (fNode.der != null) {
-            posOrder(fNode.der);
+    public void inOrder(Node fNode) {
+        if (fNode.left != null) {
+            inOrder(fNode.left);
         }
         /*funcion de la wea de java que va a mostrar la caga en una pantalla qla.*/
-    }
-
-    public int buscarMin(node nodo) {
-        if (nodo.izq == null) {
-            return nodo.key;
+        if (fNode.right != null) {
+            inOrder(fNode.right);
         }
-        return buscarMin(nodo.izq);
     }
 
-    private node fInert(node nodo, int key) {
+    public void posOrder(Node fNode) {
+        if (fNode.left != null) {
+            posOrder(fNode.left);
+        }
+        if (fNode.right != null) {
+            posOrder(fNode.right);
+        }
+        /*funcion de la wea de java que va a mostrar la caga en una pantalla qla.*/
+    }
+
+    public T  buscarMin(Node nodo) {
+        if (nodo.left == null) {
+            return (T) nodo.value;
+        }
+        return buscarMin(nodo.left);
+    }
+
+    private Node fInert(Node nodo, T key) {
         if (nodo == null) {
-            node f = new node(key);
+            Node<T> f = new Node<>(key, null, null);
             return f;
         }
-        if (nodo.key < key) {
-            node f = fInert(nodo.der, key);
-            nodo.der = f;
+        if ((int) nodo.value < (int) key) {
+            Node f = fInert(nodo.right, key);
+            nodo.right = f;
         }
-        if (nodo.key > key) {
-            node f = fInert(nodo.izq, key);
-            nodo.izq = f;
+        if ((int) nodo.value > (int) key) {
+            Node f = fInert(nodo.left, key);
+            nodo.left = f;
         }
         return nodo;
     }
 
-    private node fDelete(node nodo, int key) {
+    private Node fDelete(Node nodo, T key) {
         if (nodo == null) {
             return nodo;
         }
-        if (nodo.key < key) {
-            nodo.der = fDelete(nodo.der, key);
-        } else if (nodo.key > key) {
-            nodo.izq = fDelete(nodo.izq, key);
+        if ((int) nodo.value < (int) key) {
+            nodo.right = fDelete(nodo.right, key);
+        } else if ((int) nodo.value > (int) key) {
+            nodo.left = fDelete(nodo.left, key);
         } else {
-            if (nodo.izq == null) {
-                return nodo.der;
-            } else if (nodo.der == null) {
-                return nodo.izq;
+            if (nodo.left == null) {
+                return nodo.right;
+            } else if (nodo.right == null) {
+                return nodo.left;
             }
-            nodo.key = buscarMin(nodo.der);
-            nodo.der = fDelete(nodo.der, nodo.key);
+            nodo.value = buscarMin(nodo.right);
+            nodo.right = fDelete(nodo.right, (T) nodo.value);
         }
         return nodo;
     }
